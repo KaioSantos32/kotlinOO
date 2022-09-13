@@ -1,26 +1,28 @@
-import br.com.alura.modelo.Endereco
+package br.com.alura.teste
 
-fun main() {
+import br.com.alura.modelo.Endereco
+import java.lang.ClassCastException
+
+fun testaExpressao() {
     println()
     println("_______________ Primeiro Teste _______________")
     println()
-    println("início funcao 1")
-    for (i in 1..5){
+    println("início funcao2")
+    for (i in 1..5) {
         println(i)
         // A cada interação, uma Exception é pega,
         // indo até o fim do loop
         try {
             val endereco = Any()
             endereco as Endereco
-            throw SaldoInsuficienteException()
-
-        } catch(e: ClassCastException){
+        } catch (e: ClassCastException) {
             println("ClassCastException foi pega")
         }
     }
     println()
     println("_______________ Fim Primeiro Teste _______________")
-
+}
+fun funcao2(){
     println()
     println("_______________ Segundo Teste _______________")
     println()
@@ -30,7 +32,7 @@ fun main() {
         for (i in 1..5){
             println(i)
             val endereco = Any()
-            throw ClassCastException()
+            endereco as Endereco
         }
     } catch(e: ClassCastException){
         e.printStackTrace()
@@ -41,7 +43,4 @@ fun main() {
     println()
 
     println("fim funcao2")
-
 }
-
-class SaldoInsuficienteException(): Throwable("Saldo Insuficiente para operação")
