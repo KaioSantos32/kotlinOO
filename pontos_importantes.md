@@ -56,4 +56,30 @@ afirmo que o seguinte membro da variavel nula, possui algo armazenado diferente 
 
 ## Aula 5: Elvis Operator
 
-<p></p>
+<p>É uma forma alternativa de revisar parametros nulos no lugar do `if`.</p>
+<p>Ele é usado combinando uma Safe Call e após ela, inserir um número padrão para caso o parametro seja nulo. Segue exemplo abaixo:</p>
+
+```
+val TamanhoComplemento: Int = 
+    it.logradouro?.length ?: throw IllegalStateException("")
+```
+
+<p>A primeira parte, até o length é nossa Safe Call, onde demonstramos que queremos o tamanho do logradouro caso ele seja diferente de nulo.</p>
+
+Mas como visto anteriormente, caso ele seja nulo, irá retornar um `Null`, o que não queremos. Então ao usar o `Elvis Operator` podemos usar `?:` 
+e falar para voltar algo desejado caso o parametro seja nulo.
+
+## Aula 5: Safe Cast
+
+Ao utilizar uma Safe Cast, podemos sustituir a exception `ClassCastException` para que retorne um valor nulo. Simples assim:
+
+```
+val valor = Any()
+val numero: Int? = valor as? Int 
+```
+Dessa forma, é feito a tentativa de conversão de `Any` para `Int` e caso não seja possível, será retornado um `Null`;
+
+<h3>E para reforçar:</h3>
+<h2>Não use o Not-null Assertion Operator(!!)</h2>
+<p>Se existem erros de parametros nulos, corrija-os da forma correta para dar deploy na aplicação</p>
+
