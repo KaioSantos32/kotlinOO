@@ -18,12 +18,11 @@ fun testaContasDiferentes() {
         titular = alex,
         numero = 1000
     )
-    val fran = Cliente(nome="Fran", cpf="111.555.222-44", senha = 12)
+    val fran = Cliente(nome="Fran", cpf="111.555.222-44", senha = 2)
 
     val contaPoupanca = ContaPoupanca(
         titular = fran,
         numero = 1001
-
     )
 
     contaCorrente.deposita(1000.0)
@@ -38,12 +37,12 @@ fun testaContasDiferentes() {
     println("saldo após saque corrente: ${contaCorrente.saldo}")
     println("saldo após saque poupança: ${contaPoupanca.saldo}")
 
-    contaCorrente.transfere(100.0, contaPoupanca)
+    contaCorrente.transfere(100.0, destino = contaPoupanca, 2)
 
     println("saldo corrente após transferir para poupança: ${contaCorrente.saldo}")
     println("saldo poupança após receber transferência: ${contaPoupanca.saldo}")
 
-    contaPoupanca.transfere(200.0, contaCorrente)
+    contaPoupanca.transfere(200.0, destino = contaCorrente, 2)
 
     println("saldo poupança após transferir para corrente: ${contaPoupanca.saldo}")
     println("saldo corrente após receber transferência: ${contaCorrente.saldo}")

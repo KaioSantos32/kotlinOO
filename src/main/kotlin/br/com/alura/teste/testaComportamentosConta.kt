@@ -1,13 +1,17 @@
+import br.com.alura.exception.FalhaAutenticacaoException
+import br.com.alura.exception.SaldoInsuficienteException
 import br.com.alura.modelo.Cliente
 import br.com.alura.modelo.ContaCorrente
 import br.com.alura.modelo.ContaPoupanca
+import br.com.alura.modelo.Endereco
+import java.lang.Exception
 
 fun testaComportamentosConta() {
     val alex = Cliente(nome="Alex", cpf="159.458.758-96", senha=1)
     val contaAlex = ContaCorrente(titular = alex, numero = 12345)
     contaAlex.deposita(200.0)
 
-    val fran = Cliente(nome="Fran", cpf="111.555.222-44", senha = 12)
+    val fran = Cliente(nome="Fran", cpf="111.555.222-44", senha = 2)
 
     val contaFran = ContaPoupanca(numero = 1234, titular = fran)
     contaFran.deposita(300.0)
@@ -42,14 +46,24 @@ fun testaComportamentosConta() {
 
     println("saque em excesso na conta da Fran")
     contaFran.saca(500.0)
-    println(contaFran.saldo)
+    println("saldo atual: ${ contaFran.saldo }")
 
-    println("Transferência da conta da Fran para o Alex")
+    println("Transferencia da conta da Fran para o Alex de R$ 300.0")
 
-    if (contaFran.transfere(destino = contaAlex, valor = 300.0)) {
-        println("Transferência sucedida")
-    } else {
-        println("Falha na transferência")
+    try {
+        contaFran.transfere(destino = contaAlex, valor = 200.0, senha = 2)
+        val endereco = Any()
+        endereco as Endereco
+
+    } catch(e: SaldoInsuficienteException){
+        println("Saldo insuficiente")
+        e.printStackTrace()
+    } catch (e: FalhaAutenticacaoException){
+        println("Falha na autenticacao")
+        e.printStackTrace()
+    } catch (e: Exception){
+        println("Ops... Algo deu errado, tente novamente mais tarde")
+        e.printStackTrace()
     }
 
     println(contaAlex.saldo)
