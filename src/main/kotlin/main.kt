@@ -1,9 +1,15 @@
-import br.com.alura.exception.SaldoInsuficienteException
 import br.com.alura.modelo.Endereco
 
 fun main() {
-    var endereco: Endereco? = Endereco(logradouro = "@@@@@")
-    val logradouroNovo: String? = endereco?.logradouro
-    println(logradouroNovo)
+
+    val enderecoNulo: Endereco? = Endereco()
+    enderecoNulo?.let{endereco: Endereco? ->
+    // Caso nao use um nome, utilizar `it`
+        println(endereco?.logradouro?.length)
+        // Elvis operator:
+        val tamanhoComplemento: Int = endereco?.complemento?.length ?: throw IllegalStateException("Complemento não pode ser vazio")
+                                         // caso seja nulo, faça isso:
+        println(tamanhoComplemento)
+    }
 
 }
