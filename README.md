@@ -9,4 +9,4 @@
 <p>O objetivo deste projeto é fornecer um guia para mim e para todos que necessitarem de alguns exemplos de Kotlin e posteriormente de Android.
 Espero que seja util a quem estiver acessando e lendo.</p>
 
-<p>Para ver as anotações feitas durante o curso, criei o arquivo chamado <a href="https://github.com/KaioSantos32/kotlinOO/blob/exceptions/pontos_importantes.md">Pontos importantes</a></p>
+<p>Para ver as anotações feitas durante o curso, criei o arquivo chamado <a href="https://github.com/KaioSantos32/kotlinOO/blob/exceptions/pontos_importantes.md" target="_blank">Pontos importantes</a></p>
